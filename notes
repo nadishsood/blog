@@ -1,0 +1,45 @@
+163.
+In blogslist's componentDidMount, we call the action creator which is called
+as soon as the component mounts. 
+Action creator runs to make an API request, Api responds with data, 
+Action is returned with the fetched data on it's payload. 
+Action is dispatched to all the reducers, the one with the mathching type 
+processes it. 
+
+The reducer is going to pull off data from the payload, and everytime 
+a reducer runs it returns a value. Those values form a new state object inside 
+our redux store. Everytime this happens, the new state is sent to the react
+side of the application, and our component re renders. 
+
+The mapStatetoProps helps us to get the new list from the global state into our component. 
+
+Action creators are responsible for making the api requests and that's where
+redux-thunk comes into play. 
+
+165.
+error: action must be plain objects, use custom middleware.
+
+166. Async action creators:
+
+because of the async await syntax our action does not return a plain object.
+the problem happens because we do not dispatch a plain object but rather a request object(see picture)
+
+167.
+If we remove async await and rather use promise and pass the promise as the payload:
+this is what happens: 
+
+This does not work becuase the request might have not returned(the data takes time to get fetched)
+by the time the action gets to our reducers because actions get consumed
+in a FRACTION of a milllisecond. We can't make the reducer wait for the data to return before the reducer runs.
+
+see photo. 
+
+therefore we use a middleware called redux thunk. 
+
+Now we will create asynchronous action creator using redux thunk middleware. 
+
+middleware sits between action dispatch and reducers (in the redux cycle).
+
+- if redux thunk receives a function, it executes it and eaits for the async request to 
+finish and then "manually dispatch" a new action to dispatch, goes to redux thunk, in this 
+it is going to be an object and redux thunk will forward it to all reducers. 
