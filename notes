@@ -42,4 +42,33 @@ middleware sits between action dispatch and reducers (in the redux cycle).
 
 - if redux thunk receives a function, it executes it and eaits for the async request to 
 finish and then "manually dispatch" a new action to dispatch, goes to redux thunk, in this 
-it is going to be an object and redux thunk will forward it to all reducers. 
+it is going to be an object and redux thunk will forward it to all reducers .
+
+172.
+when redux boots up, all our reducers are run atleast once. A reducre can never
+ever return undefined during initialization or at any other time.  
+
+173.
+The first time the reducer gets called during initaliazation, the first argument is 
+undefined, the second is an action, the red should return some initial state. 
+
+
+everytime a reducer runs, it gets the previous state it returned as the first argument. 
+
+must not mutate the 'state argument. 
+
+if a reducer returns a primitive, we dont have to worry about mutations but in case 
+of other types we have to. 
+tbh we can change the state however we want all day, except one corner case.
+In general we are not going to mutate the state argument ever. 
+
+Corner Case:
+They say dont change the state because if we directly change the state, we're not really
+changing the reference to the object or array and redux wont be able to detect
+any state change. We must therefore return a new array/object so that redux detects it
+and notifies the react side of our application to re render.
+
+
+  
+ 
+
