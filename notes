@@ -52,7 +52,6 @@ ever return undefined during initialization or at any other time.
 The first time the reducer gets called during initaliazation, the first argument is 
 undefined, the second is an action, the red should return some initial state. 
 
-
 everytime a reducer runs, it gets the previous state it returned as the first argument. 
 
 must not mutate the 'state argument. 
@@ -68,7 +67,7 @@ changing the reference to the object or array and redux wont be able to detect
 any state change. We must therefore return a new array/object so that redux detects it
 and notifies the react side of our application to re render.
 
+All our reducer run once when our components render initially. Therefore we 
+return an empty array for posts initially. 
 
-  
- 
-
+186.
