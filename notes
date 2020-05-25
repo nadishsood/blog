@@ -40,7 +40,7 @@ Now we will create asynchronous action creator using redux thunk middleware.
 
 middleware sits between action dispatch and reducers (in the redux cycle).
 
-- if redux thunk receives a function, it executes it and eaits for the async request to 
+- if redux thunk receives a function, it executes it and waits for the async request to 
 finish and then "manually dispatch" a new action to dispatch, goes to redux thunk, in this 
 it is going to be an object and redux thunk will forward it to all reducers .
 
@@ -71,3 +71,4 @@ All our reducer run once when our components render initially. Therefore we
 return an empty array for posts initially. 
 
 186.
+we can extract logic in mapStateToProps (e.g finding the user in our userHeader comp)
